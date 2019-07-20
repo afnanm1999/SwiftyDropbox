@@ -23,8 +23,8 @@
 		9B70B76F22BD733A0059DA1E /* Paper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B70B74922BD733A0059DA1E /* Paper.swift */; };
 		9B70B77022BD733A0059DA1E /* TeamPolicies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B70B74A22BD733A0059DA1E /* TeamPolicies.swift */; };
 		9B70B77122BD733A0059DA1E /* TeamPolicies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B70B74A22BD733A0059DA1E /* TeamPolicies.swift */; };
-		9B70B77222BD733A0059DA1E /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B70B74B22BD733A0059DA1E /* Auth.swift */; };
-		9B70B77322BD733A0059DA1E /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B70B74B22BD733A0059DA1E /* Auth.swift */; };
+		9B70B77222BD733A0059DA1E /* DropBoxAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B70B74B22BD733A0059DA1E /* DropBoxAuth.swift */; };
+		9B70B77322BD733A0059DA1E /* DropBoxAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B70B74B22BD733A0059DA1E /* DropBoxAuth.swift */; };
 		9B70B77422BD733A0059DA1E /* Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B70B74C22BD733A0059DA1E /* Sharing.swift */; };
 		9B70B77522BD733A0059DA1E /* Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B70B74C22BD733A0059DA1E /* Sharing.swift */; };
 		9B70B77622BD733A0059DA1E /* FileProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B70B74D22BD733A0059DA1E /* FileProperties.swift */; };
@@ -114,7 +114,7 @@
 		9B70B74822BD733A0059DA1E /* TeamCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamCommon.swift; sourceTree = "<group>"; };
 		9B70B74922BD733A0059DA1E /* Paper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paper.swift; sourceTree = "<group>"; };
 		9B70B74A22BD733A0059DA1E /* TeamPolicies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamPolicies.swift; sourceTree = "<group>"; };
-		9B70B74B22BD733A0059DA1E /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		9B70B74B22BD733A0059DA1E /* DropBoxAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropBoxAuth.swift; sourceTree = "<group>"; };
 		9B70B74C22BD733A0059DA1E /* Sharing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sharing.swift; sourceTree = "<group>"; };
 		9B70B74D22BD733A0059DA1E /* FileProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileProperties.swift; sourceTree = "<group>"; };
 		9B70B74E22BD733A0059DA1E /* FileRequestsRoutes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileRequestsRoutes.swift; sourceTree = "<group>"; };
@@ -199,7 +199,7 @@
 				9B70B74822BD733A0059DA1E /* TeamCommon.swift */,
 				9B70B74922BD733A0059DA1E /* Paper.swift */,
 				9B70B74A22BD733A0059DA1E /* TeamPolicies.swift */,
-				9B70B74B22BD733A0059DA1E /* Auth.swift */,
+				9B70B74B22BD733A0059DA1E /* DropBoxAuth.swift */,
 				9B70B74C22BD733A0059DA1E /* Sharing.swift */,
 				9B70B74D22BD733A0059DA1E /* FileProperties.swift */,
 				9B70B74E22BD733A0059DA1E /* FileRequestsRoutes.swift */,
@@ -402,6 +402,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = F2C6FCBB1D89E16800E0DD9E;
@@ -457,7 +458,7 @@
 				9B70B79E22BD733A0059DA1E /* StoneValidators.swift in Sources */,
 				9B70B76E22BD733A0059DA1E /* Paper.swift in Sources */,
 				9B70B76C22BD733A0059DA1E /* TeamCommon.swift in Sources */,
-				9B70B77222BD733A0059DA1E /* Auth.swift in Sources */,
+				9B70B77222BD733A0059DA1E /* DropBoxAuth.swift in Sources */,
 				9B70B78422BD733A0059DA1E /* Contacts.swift in Sources */,
 				9B70B78A22BD733A0059DA1E /* BaseTeam.swift in Sources */,
 				9B70B79C22BD733A0059DA1E /* SharingRoutes.swift in Sources */,
@@ -507,7 +508,7 @@
 				9B70B79F22BD733A0059DA1E /* StoneValidators.swift in Sources */,
 				9B70B76F22BD733A0059DA1E /* Paper.swift in Sources */,
 				9B70B76D22BD733A0059DA1E /* TeamCommon.swift in Sources */,
-				9B70B77322BD733A0059DA1E /* Auth.swift in Sources */,
+				9B70B77322BD733A0059DA1E /* DropBoxAuth.swift in Sources */,
 				9B70B78522BD733A0059DA1E /* Contacts.swift in Sources */,
 				9B70B78B22BD733A0059DA1E /* BaseTeam.swift in Sources */,
 				9B70B79D22BD733A0059DA1E /* SharingRoutes.swift in Sources */,

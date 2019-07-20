@@ -7,13 +7,13 @@
 import Foundation
 
 /// Datatypes and serializers for the auth namespace
-open class Auth {
+open class DropBoxAuth {
     /// Error occurred because the account doesn't have permission to access the resource.
     public enum AccessError: CustomStringConvertible {
         /// Current account type cannot access the resource.
-        case invalidAccountType(Auth.InvalidAccountTypeError)
+        case invalidAccountType(DropBoxAuth.InvalidAccountTypeError)
         /// Current account cannot access Paper.
-        case paperAccessDenied(Auth.PaperAccessError)
+        case paperAccessDenied(DropBoxAuth.PaperAccessError)
         /// An unspecified error.
         case other
 
@@ -26,11 +26,11 @@ open class Auth {
         open func serialize(_ value: AccessError) -> JSON {
             switch value {
                 case .invalidAccountType(let arg):
-                    var d = ["invalid_account_type": Auth.InvalidAccountTypeErrorSerializer().serialize(arg)]
+                    var d = ["invalid_account_type": DropBoxAuth.InvalidAccountTypeErrorSerializer().serialize(arg)]
                     d[".tag"] = .str("invalid_account_type")
                     return .dictionary(d)
                 case .paperAccessDenied(let arg):
-                    var d = ["paper_access_denied": Auth.PaperAccessErrorSerializer().serialize(arg)]
+                    var d = ["paper_access_denied": DropBoxAuth.PaperAccessErrorSerializer().serialize(arg)]
                     d[".tag"] = .str("paper_access_denied")
                     return .dictionary(d)
                 case .other:
@@ -45,10 +45,10 @@ open class Auth {
                     let tag = Serialization.getTag(d)
                     switch tag {
                         case "invalid_account_type":
-                            let v = Auth.InvalidAccountTypeErrorSerializer().deserialize(d["invalid_account_type"] ?? .null)
+                            let v = DropBoxAuth.InvalidAccountTypeErrorSerializer().deserialize(d["invalid_account_type"] ?? .null)
                             return AccessError.invalidAccountType(v)
                         case "paper_access_denied":
-                            let v = Auth.PaperAccessErrorSerializer().deserialize(d["paper_access_denied"] ?? .null)
+                            let v = DropBoxAuth.PaperAccessErrorSerializer().deserialize(d["paper_access_denied"] ?? .null)
                             return AccessError.paperAccessDenied(v)
                         case "other":
                             return AccessError.other
@@ -74,7 +74,7 @@ open class Auth {
         /// The access token has expired.
         case expiredAccessToken
         /// The access token does not have the required scope to access the route.
-        case missingScope(Auth.TokenScopeError)
+        case missingScope(DropBoxAuth.TokenScopeError)
         /// An unspecified error.
         case other
 
@@ -107,7 +107,7 @@ open class Auth {
                     d[".tag"] = .str("expired_access_token")
                     return .dictionary(d)
                 case .missingScope(let arg):
-                    var d = Serialization.getFields(Auth.TokenScopeErrorSerializer().serialize(arg))
+                    var d = Serialization.getFields(DropBoxAuth.TokenScopeErrorSerializer().serialize(arg))
                     d[".tag"] = .str("missing_scope")
                     return .dictionary(d)
                 case .other:
@@ -132,7 +132,7 @@ open class Auth {
                         case "expired_access_token":
                             return AuthError.expiredAccessToken
                         case "missing_scope":
-                            let v = Auth.TokenScopeErrorSerializer().deserialize(json)
+                            let v = DropBoxAuth.TokenScopeErrorSerializer().deserialize(json)
                             return AuthError.missingScope(v)
                         case "other":
                             return AuthError.other
@@ -250,10 +250,10 @@ open class Auth {
     /// Error occurred because the app is being rate limited.
     open class RateLimitError: CustomStringConvertible {
         /// The reason why the app is being rate limited.
-        public let reason: Auth.RateLimitReason
+        public let reason: DropBoxAuth.RateLimitReason
         /// The number of seconds that the app should wait before making another request.
         public let retryAfter: UInt64
-        public init(reason: Auth.RateLimitReason, retryAfter: UInt64 = 1) {
+        public init(reason: DropBoxAuth.RateLimitReason, retryAfter: UInt64 = 1) {
             self.reason = reason
             comparableValidator()(retryAfter)
             self.retryAfter = retryAfter
@@ -266,7 +266,7 @@ open class Auth {
         public init() { }
         open func serialize(_ value: RateLimitError) -> JSON {
             let output = [ 
-            "reason": Auth.RateLimitReasonSerializer().serialize(value.reason),
+            "reason": DropBoxAuth.RateLimitReasonSerializer().serialize(value.reason),
             "retry_after": Serialization._UInt64Serializer.serialize(value.retryAfter),
             ]
             return .dictionary(output)
@@ -274,7 +274,7 @@ open class Auth {
         open func deserialize(_ json: JSON) -> RateLimitError {
             switch json {
                 case .dictionary(let dict):
-                    let reason = Auth.RateLimitReasonSerializer().deserialize(dict["reason"] ?? .null)
+                    let reason = DropBoxAuth.RateLimitReasonSerializer().deserialize(dict["reason"] ?? .null)
                     let retryAfter = Serialization._UInt64Serializer.deserialize(dict["retry_after"] ?? .number(1))
                     return RateLimitError(reason: reason, retryAfter: retryAfter)
                 default:
@@ -492,9 +492,9 @@ open class Auth {
         version: 1,
         namespace: "auth",
         deprecated: false,
-        argSerializer: Auth.TokenFromOAuth1ArgSerializer(),
-        responseSerializer: Auth.TokenFromOAuth1ResultSerializer(),
-        errorSerializer: Auth.TokenFromOAuth1ErrorSerializer(),
+        argSerializer: DropBoxAuth.TokenFromOAuth1ArgSerializer(),
+        responseSerializer: DropBoxAuth.TokenFromOAuth1ResultSerializer(),
+        errorSerializer: DropBoxAuth.TokenFromOAuth1ErrorSerializer(),
         attrs: ["host": "api",
                 "style": "rpc"]
     )

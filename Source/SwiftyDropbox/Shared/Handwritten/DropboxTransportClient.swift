@@ -274,10 +274,10 @@ open class Box<T> {
 public enum CallError<EType>: CustomStringConvertible {
     case internalServerError(Int, String?, String?)
     case badInputError(String?, String?)
-    case rateLimitError(Auth.RateLimitError, String?, String?, String?)
+    case rateLimitError(DropBoxAuth.RateLimitError, String?, String?, String?)
     case httpError(Int?, String?, String?)
-    case authError(Auth.AuthError, String?, String?, String?)
-    case accessError(Auth.AccessError, String?, String?, String?)
+    case authError(DropBoxAuth.AuthError, String?, String?, String?)
+    case accessError(DropBoxAuth.AccessError, String?, String?, String?)
     case routeError(Box<EType>, String?, String?, String?)
     case clientError(Error?)
 
@@ -418,7 +418,7 @@ open class Request<RSerial: JSONSerializer, ESerial: JSONSerializer> {
                 let json = SerializeUtil.parseJSON(data!)
                 switch json {
                 case .dictionary(let d):
-                    return .authError(Auth.AuthErrorSerializer().deserialize(d["error"]!), getStringFromJson(json: d, key: "user_message"), getStringFromJson(json: d, key: "error_summary"), requestId)
+                    return .authError(DropBoxAuth.AuthErrorSerializer().deserialize(d["error"]!), getStringFromJson(json: d, key: "user_message"), getStringFromJson(json: d, key: "error_summary"), requestId)
                 default:
                     fatalError("Failed to parse error type")
                 }
@@ -426,7 +426,7 @@ open class Request<RSerial: JSONSerializer, ESerial: JSONSerializer> {
                 let json = SerializeUtil.parseJSON(data!)
                 switch json {
                 case .dictionary(let d):
-                    return .accessError(Auth.AccessErrorSerializer().deserialize(d["error"]!), getStringFromJson(json: d, key: "user_message"), getStringFromJson(json: d, key: "error_summary"),requestId)
+                    return .accessError(DropBoxAuth.AccessErrorSerializer().deserialize(d["error"]!), getStringFromJson(json: d, key: "user_message"), getStringFromJson(json: d, key: "error_summary"),requestId)
                 default:
                     fatalError("Failed to parse error type")
                 }
@@ -442,7 +442,7 @@ open class Request<RSerial: JSONSerializer, ESerial: JSONSerializer> {
                 let json = SerializeUtil.parseJSON(data!)
                 switch json {
                 case .dictionary(let d):
-                    return .rateLimitError(Auth.RateLimitErrorSerializer().deserialize(d["error"]!), getStringFromJson(json: d, key: "user_message"), getStringFromJson(json: d, key: "error_summary"), requestId)
+                    return .rateLimitError(DropBoxAuth.RateLimitErrorSerializer().deserialize(d["error"]!), getStringFromJson(json: d, key: "user_message"), getStringFromJson(json: d, key: "error_summary"), requestId)
                 default:
                     fatalError("Failed to parse error type")
                 }

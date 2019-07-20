@@ -16,11 +16,11 @@ open class AuthRoutes {
     /// - parameter oauth1Token: The supplied OAuth 1.0 access token.
     /// - parameter oauth1TokenSecret: The token secret associated with the supplied access token.
     ///
-    ///  - returns: Through the response callback, the caller will receive a `Auth.TokenFromOAuth1Result` object on
-    /// success or a `Auth.TokenFromOAuth1Error` object on failure.
-    @discardableResult open func tokenFromOauth1(oauth1Token: String, oauth1TokenSecret: String) -> RpcRequest<Auth.TokenFromOAuth1ResultSerializer, Auth.TokenFromOAuth1ErrorSerializer> {
-        let route = Auth.tokenFromOauth1
-        let serverArgs = Auth.TokenFromOAuth1Arg(oauth1Token: oauth1Token, oauth1TokenSecret: oauth1TokenSecret)
+    ///  - returns: Through the response callback, the caller will receive a `DropBoxAuth.TokenFromOAuth1Result` object on
+    /// success or a `DropBoxAuth.TokenFromOAuth1Error` object on failure.
+    @discardableResult open func tokenFromOauth1(oauth1Token: String, oauth1TokenSecret: String) -> RpcRequest<DropBoxAuth.TokenFromOAuth1ResultSerializer, DropBoxAuth.TokenFromOAuth1ErrorSerializer> {
+        let route = DropBoxAuth.tokenFromOauth1
+        let serverArgs = DropBoxAuth.TokenFromOAuth1Arg(oauth1Token: oauth1Token, oauth1TokenSecret: oauth1TokenSecret)
         return client.request(route, serverArgs: serverArgs)
     }
 
@@ -30,7 +30,7 @@ open class AuthRoutes {
     ///  - returns: Through the response callback, the caller will receive a `Void` object on success or a `Void` object
     /// on failure.
     @discardableResult open func tokenRevoke() -> RpcRequest<VoidSerializer, VoidSerializer> {
-        let route = Auth.tokenRevoke
+        let route = DropBoxAuth.tokenRevoke
         return client.request(route)
     }
 
